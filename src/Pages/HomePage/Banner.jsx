@@ -1,16 +1,22 @@
 import { easeOut } from "motion";
 import { motion } from "motion/react"
 import team1 from '../../assets/team/team1.jpg'
+import team2 from '../../assets/team/team2.jpg'
 const Banner = () => {
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 ">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="flex-1">
                     <motion.img
-                        animate={{ y: 50}}
-                        transition={{duration:2,delay:1,repeat:Infinity}}
+                        animate={{ y: [50, 10, 50]}}
+                        transition={{duration:5,delay:1,repeat:Infinity}}
                         src={team1}
-                        className="max-w-sm rounded-lg shadow-2xl" />
+                        className="max-w-sm rounded-t-[40px] w-80 h-48 rounded-br-[40px] border-b-4 border-l-4 border-green-400 shadow-2xl" />
+                    <motion.img
+                        animate={{ x: [100,150,100]}}
+                        transition={{duration:5,delay:1,repeat:Infinity}}
+                        src={team2}
+                        className="max-w-sm rounded-t-[40px] w-80 h-48 rounded-br-[40px] border-b-4 border-l-4 border-green-400 shadow-2xl" />
                </div>
                 <div className="flex-1">
                     <motion.h1

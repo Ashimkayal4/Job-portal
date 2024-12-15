@@ -1,3 +1,4 @@
+import AllJobs from "./AllJobs";
 import Banner from "./Banner";
 
 const Home = () => {
@@ -5,6 +6,9 @@ const Home = () => {
         <div>
             <section>
                 <Banner></Banner>
+            </section>
+            <section>
+                <AllJobs></AllJobs>
             </section>
         </div>
     );

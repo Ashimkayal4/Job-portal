@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-    const { createUser, setUser } = useContext(AuthContext)
+    const { createUser, setUser ,setLoading } = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -24,6 +24,7 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                setLoading(true)
             })
             .then(err => {
                 console.log(err)

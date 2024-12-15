@@ -1,10 +1,29 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import logo from '../assets/job.png'
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOutUser } = useContext(AuthContext)
+
+    const logOut = () => {
+        logOutUser()
+            .then(res => {
+                console.log(res)
+                Swal.fire({
+                    position: "top-center",
+                    icon: "error",
+                    title: "LogOut successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .then(err => {
+                console.log(err)
+            })
+    }
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -35,6 +54,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
+                <img className="w-12 mr-2" src={logo} alt="" />
                 <a className="text-2xl">JOB House</a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -52,7 +72,7 @@ const Navbar = () => {
 
                 {
                     user && <>
-                        <button className="btn">LogOut</button>
+                        <button onClick={logOut} className="btn">LogOut</button>
                     </>
                 }
             </div>

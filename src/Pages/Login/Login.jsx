@@ -3,9 +3,13 @@ import lottie from '../../assets/animation/Animation - 1733853146710 (1).json'
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { signInUser, setUser } = useContext(AuthContext);
+    const { signInUser, setUser ,setLoading } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state || '/'
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -25,6 +29,8 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from) 
+                setLoading(true)
             })
             .then(err => {
                 console.log(err)
